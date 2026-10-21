@@ -122,7 +122,6 @@
   }
 }
 
-
 /* Portfolio refinement: hero and About layout */
 .hero::after {
   width: min(38vw, 470px);
@@ -415,5 +414,117 @@
   -webkit-mask-image: none;
   mask-image: none;
 }
+
+
+/* Mobile overflow fix — preserves desktop layout */
+@media (max-width: 560px) {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+
+  .section-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Selected Work / project cards */
+  .projects,
+  .project-list,
+  .project,
+  .project-info,
+  .project-visual-wrap {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-visual-wrap {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .project-screenshot {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .project-visual-wrap img {
+    max-width: 100%;
+  }
+
+  .project-title-row {
+    min-width: 0;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .project-title-row > * {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .project-description,
+  .project-note,
+  .project-tags {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  /* Prevent wide grid and flex children */
+  .skills,
+  .education,
+  .contact,
+  .education-grid,
+  .education-list,
+  .contact-grid,
+  .contact-form {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .education-item {
+    grid-template-columns:
+      minmax(0, 85px)
+      minmax(0, 1fr)
+      20px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
 
 
